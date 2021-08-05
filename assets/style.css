@@ -1,0 +1,244 @@
+/*
+ * Base styles
+ * All component styles should go somewhere else
+ */
+:root {
+	--font-sans-serif: -apple-system, BlinkMacSystemFont, Roboto, 'Inter', Helvetica, Arial, Segoe UI, sans-serif;
+}
+
+*, *::before, *::after {
+	box-sizing: border-box;
+}
+
+[tabindex="-1"]:focus {
+	outline: none;
+}
+
+/* Body text */
+body {
+	background: #fff;
+	font-family: sans-serif;
+	font-family: var(--font-sans-serif);
+	font-size: 1rem;
+	font-feature-settings: "lnum" 1;
+	hyphens: auto;
+	line-height: 1.5;
+	margin: 0;
+}
+
+@media (min-width: 50em) {
+	body {
+		hyphens: none;
+	}
+}
+
+/* From https://www.scottohara.me/blog/2017/04/14/inclusively-hidden.html */
+.sr-only:not(:focus):not(:active) {
+	clip: rect(0 0 0 0); 
+	clip-path: inset(100%);
+	height: 1px;
+	overflow: hidden;
+	position: absolute;
+	white-space: nowrap; 
+	width: 1px;
+}
+
+/* Links */
+a {
+	color: inherit;
+	text-decoration: underline;
+	text-underline-offset: 0.1em;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+a:focus {
+	background: #fd0;
+	box-shadow: 0 -2px #fd0, 0 4px;
+	outline: 3px solid transparent;
+	text-decoration: none;
+}
+
+@supports (text-decoration-color: #fff) {
+	a[href^="http"]::after {
+		content: '↗';
+		display: inline;
+		text-decoration: inherit;
+		text-decoration-color: #fff;
+	}
+}
+
+/* Headings */
+h1,
+h2,
+h3,
+h4 {
+	font-family: sans-serif;
+	font-family: var(--font-sans-serif);
+	line-height: 1.25;
+	margin: 0;
+}
+
+h1,
+.u-h1 {
+	font-size: 2.25rem;
+}
+
+h2,
+.u-h2 {
+	font-size: 1.875rem;
+}
+
+h3,
+.u-h3 {
+	font-size: 1.5rem;
+}
+
+h4,
+.u-h4 {
+	font-size: 1.25rem;
+}
+
+/* Text nodes */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+li,
+dt,
+dd {
+	max-width: 80ch;
+}
+
+ol,
+ul,
+p {
+	margin: 0;
+}
+
+ol,
+ul {
+	padding-left: 1em;
+}
+
+p:empty {
+	display: none;
+}
+
+blockquote {
+	margin: 0 0 0 1em;
+}
+
+li {
+	page-break-inside: avoid;
+}
+
+i,
+em,
+b,
+strong {
+	font-family: var(--font-sans-serif);
+}
+
+i,
+em {
+	font-style: normal;
+	font-weight: normal;
+}
+
+/* Tables */
+table {
+	border-collapse: collapse;
+	font-family: sans-serif;
+	font-family: var(--font-sans-serif);
+	hyphens: none;
+}
+
+caption {
+	font-weight: bold;
+	text-align: inherit;
+	width: 100%;
+}
+
+thead {
+	vertical-align: bottom;
+}
+
+thead > tr:last-child > * {
+	border-bottom: 1px solid #555;
+}
+
+th {
+	text-align: inherit;
+}
+
+tbody {
+	vertical-align: top;
+}
+
+tr > * {
+	padding: 0.25em 0;
+}
+
+tr > * + * {
+	padding-left: 1em;
+}
+
+/* Forms */
+button,
+.u-button,
+input {
+	line-height: 1.25;
+	font: inherit;
+	letter-spacing: inherit;
+	word-spacing: inherit;
+}
+
+button,
+.u-button {
+	background: #028;
+	border: 2px solid #028;
+	color: #fff;
+	font-weight: bold;
+	padding: 0.25em 1em;
+	text-align: center;
+}
+
+button:focus,
+.u-button:focus {
+	border-color: #fd0;
+	box-shadow: inset 0 0 0 1px #fd0;
+	outline: 3px solid transparent;
+}
+
+button:focus:not(:active):not(:hover),
+.u-button:focus:not(:active):not(:hover) {
+	background-color: #fd0;
+	box-shadow: 0 2px 0;
+	color: #000;
+}
+
+input[type="text"] {
+	border: 2px solid #777;
+	padding: 0.25em;
+}
+
+input[type="text"]:focus {
+	box-shadow: inset 0 0 0 2px #777;
+	outline: 3px solid #fd0;
+	outline-offset: 0;
+}
+
+/*
+ * Utilities
+ */
+
+/* Table wrapper divs */
+.u-table-wrapper {
+	overflow-x: auto;
+}
